@@ -1,0 +1,5 @@
+Para guardar cambios en GIT
+
+git add .
+git commit (agregar los comentarios de la version)
+git push (poner usuario y de contraseña, el token)
