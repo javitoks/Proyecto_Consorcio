@@ -60,9 +60,9 @@ class Inquilino(models.Model):
 class Casa(models.Model):
     numero_casa = models.CharField(max_length=2, blank=False, null=False, help_text='Ingrese el numero y la letra ej: 5A')
     propietario = models.ForeignKey(Propietario, on_delete=models.CASCADE)  
-    administrador = models.ForeignKey(Administrador, on_delete=models.CASCADE)
-    opciones_estado = [('ALQ', 'Alquilada'), ('DES' , 'Desocupada') , ('OCU', 'Ocupada-Dueño')]
-    estado = models.CharField(max_length=3,  null=False, choices=opciones_estado, default='OCU')
+    administrador = models.ForeignKey(Administrador, on_delete=models.CASCADE) 
+    opciones_estado = [('Alquilada', 'Alquilada'), ('Desocupada' , 'Desocupada') , ('Ocupada-Dueño', 'Ocupada-Dueño')]
+    estado = models.CharField(max_length=15, null=False, choices=opciones_estado, default='OCU')
     inquilino = models.ForeignKey(Inquilino, verbose_name=("Inquilino"), on_delete=models.CASCADE)
     disponibilidad = models.BooleanField(default=True)
     creado = models.DateTimeField(auto_now_add=True) 

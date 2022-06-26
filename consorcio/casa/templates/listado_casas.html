@@ -1,0 +1,66 @@
+{% extends "home.html" %}
+
+{% block content %}
+
+<div class="card card-default">
+<div class="card-header">
+<h3 class="card-title">
+
+<i class="fas fa-search"></i>
+{{ titulo }}
+</h3>
+</div>
+
+<div class="card-body">
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Casa</th>
+            <th scope="col">Propietario</th>
+            <th scope="col">Administrador</th>
+            <th scope="col">Inquilino</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Disponibilidad</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        
+        </thead>
+        
+        <tbody class="table-group-divider">
+          
+        {% for casa in casas %}
+               
+        <tr>
+            <td>{{ casa.numero_casa }}</td>
+            <td>{{casa.propietario}}</td>
+            <td>{{casa.administrador}}</td>
+            <td>{{casa.inquilino}}</td>
+            <td>{{casa.estado}}</td>
+            <td>{{casa.disponibilidad}}</td>
+            <td>
+              <button type="button" class="btn btn-primary btn-xl"><i class="fa-solid fa-pen-to-square"></i></button>
+              <button type="button" class="btn btn-primary btn-xl">Primary</button>
+            
+            </td>
+           
+        </tr> 
+            
+
+        {% endfor %}
+
+        </tbody>
+      </table>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+{% endblock %}
+
+
+
