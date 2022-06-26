@@ -1,0 +1,38 @@
+{% extends "list.html" %} 
+
+{% block columns %}
+<tr>
+  <th scope="col">Nombre</th>
+  <th scope="col">Apellido</th>
+  <th scope="col">Telefono</th>
+  <th scope="col">Email</th>
+  <th scope="col">CBU</th>
+  <th scope="col">Acciones</th>
+</tr>
+{% endblock columns %} 
+
+{% block rows %} 
+
+
+{% for propietario in propietarios %}
+
+<tr>
+  <td>{{ propietario.nombre }}</td>
+  <td>{{propietario.apellido}}</td>
+  <td>{{propietario.telefono}}</td>
+  <td>{{propietario.email}}</td>
+  <td>{{propietario.cbu}}</td>
+  
+  <td>
+    <button type="button" class="btn btn-warning">
+      <i class="fas fa-edit"></i>
+    </button>
+    <button type="button" class="btn btn-danger">
+      <i class="fas fa-trash"></i>
+    </button>
+  </td>
+</tr>
+
+{% endfor %} 
+
+{% endblock rows %}

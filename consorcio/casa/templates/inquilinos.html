@@ -1,0 +1,36 @@
+{% extends "list.html" %} 
+
+{% block columns %}
+<tr>
+  <th scope="col">Nombre</th>
+  <th scope="col">Apellido</th>
+  <th scope="col">Telefono</th>
+  <th scope="col">Email</th>
+  <th scope="col">CBU</th>
+  <th scope="col">Acciones</th>
+</tr>
+{% endblock columns %} 
+
+{% block rows %} 
+
+{% for inquilino in inquilinos %}
+
+<tr>
+  <td>{{inquilino.nombre }}</td>
+  <td>{{inquilinoo.apellido}}</td>
+  <td>{{inquilino.telefono}}</td>
+  <td>{{inquilinoo.email}}</td>
+  <td>{{inquilino.cbu}}</td>
+  <td>
+    <button type="button" class="btn btn-warning">
+      <i class="fas fa-edit"></i>
+    </button>
+    <button type="button" class="btn btn-danger">
+      <i class="fas fa-trash"></i>
+    </button>
+  </td>
+</tr>
+
+{% endfor %} 
+
+{% endblock rows %}

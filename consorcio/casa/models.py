@@ -69,6 +69,7 @@ class Casa(models.Model):
     modificado = models.DateTimeField(auto_now=True)
 
     class Meta:
+        ordering = ['numero_casa']
         verbose_name = ("Casa")
         verbose_name_plural = ("Casas")
     
