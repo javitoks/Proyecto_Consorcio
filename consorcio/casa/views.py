@@ -1,6 +1,6 @@
 from django.http import HttpRequest
 from django.shortcuts import render
-from casa.forms import FormularioPropietario
+from casa.forms import FormularioPropietario, FormularioInquilino
 from casa.models import Casa, Inquilino, Propietario
 
 # Create your views here.
@@ -31,11 +31,7 @@ class FormularioPropietarioView(HttpRequest):
             form.save()
         propietarios = Propietario.objects.all()
         return render(request, 'propietarios.html', {'propietarios': propietarios})
-    
-    
-    
-    #por ahora estan aca
-    
+
     def listado_propietarios(request):
         data = {
             'titulo': 'Listado de Propietarios',
@@ -50,9 +46,30 @@ class FormularioPropietarioView(HttpRequest):
         }
         return render(request, 'listado_casas.html', data)
 
+
+class FormularioInquilinoView(HttpRequest):
+
+    def index(request):
+        inquilino = FormularioInquilino()
+        return render(request, 'registrarinquilino.html', {'form': inquilino})
+
+
+    def procesar_formulario(request):
+        inquilino = FormularioInquilino(request.POST)
+        if inquilino.is_valid():
+            inquilino.save()
+            inquilino = FormularioInquilino()
+        return render(request, 'registrarinquilino.html', {'form': inquilino, 'mensaje': 'OK'})
+
+
     def listado_inquilinos(request):
         data = {
             'titulo': 'Listado de Propietarios',
             'inquilinos': Inquilino.objects.all()
         }
         return render(request, 'inquilinos.html', data)
+
+    def editar_inquilino(request, id_inquilino):
+        inquilino = Propietario.objects.filter(id=id_inquilino).first()
+        form = FormularioPropietario(instance = inquilino)
+        return render(request, 'editarinquilino.html', {'form':form, 'inquilino':inquilino})

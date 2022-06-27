@@ -1,7 +1,7 @@
 {% load static %}
 
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand-md navbar-orange navbar-light">
+<nav class="main-header navbar navbar-expand-md navbar-primary navbar-dark">
     <div class="container">
       <a href="{% url 'home' %}" class="navbar-brand">
         <img src="{% static 'img/2149-a.png' %}" alt="logo consorcio" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -64,8 +64,8 @@
                 <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
                   
                   <li>
-                    <a tabindex="-1" href="{% url 'registrarpropietario' %}" class="dropdown-item">Registrar Inquilino</a>
-                    <a tabindex="-1" href="{% url 'propietarios' %}" class="dropdown-item">Editar Inquilino</a>
+                    <a tabindex="-1" href="{% url 'registrarinquilinos' %}" class="dropdown-item">Registrar Inquilino</a>
+                    <a tabindex="-1" href="{% url 'inquilinos' %}" class="dropdown-item">Editar Inquilino</a>
                  
                   </li>            
                 
