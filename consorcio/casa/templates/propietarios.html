@@ -17,11 +17,11 @@
 {% for propietario in propietarios %}
 
 <tr>
-  <td>{{ propietario.nombre }}</td>
+  <td>{{propietario.nombre}}</td>
   <td>{{propietario.apellido}}</td>
   <td>{{propietario.telefono}}</td>
   <td>{{propietario.email}}</td>
-  <td>{{propietario.cbu}}</td>
+  <td>{{propietario.CBU}}</td>
   
   <td>
     <a href="{% url 'editarpropietario' propietario.id %}" class="btn btn-warning">

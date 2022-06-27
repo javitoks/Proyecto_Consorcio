@@ -23,7 +23,7 @@ class Administrador(models.Model):
     
 
 class Propietario(models.Model):
-    nombre = models.CharField(max_length=30, verbose_name='Propietario')
+    nombre = models.CharField(max_length=30)
     apellido = models.CharField(max_length=30, blank=True)
     telefono = models.CharField(max_length=10, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
