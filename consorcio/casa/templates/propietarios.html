@@ -27,7 +27,7 @@
     <a href="{% url 'editarpropietario' propietario.id %}" class="btn btn-warning">
       <i class="fas fa-edit"></i>
     </a>
-    <a href="#" class="btn btn-danger">
+    <a href="{% url 'eliminarpropietario' propietario.id %}" class="btn btn-danger">
       <i class="fas fa-trash"></i>
     </a>
   </td>
@@ -36,3 +36,16 @@
 {% endfor %} 
 
 {% endblock rows %}
+
+{% block botones %}
+
+<div class="card-footer">
+  <a href='{% url 'registrarpropietario' %}' class="btn btn-primary btn-flat"><i class="fas fa-plus"></i> Ingresar Nuevo</a>
+  <a href='{% url 'home' %}' class="btn btn-danger btn-flat"><i class="fas fa-ban"></i> Cancelar</a>
+</div>
+
+{% endblock botones %}
+
+
+
+

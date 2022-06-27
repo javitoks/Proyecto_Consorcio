@@ -24,10 +24,9 @@
 
         </table>
       </div>
-        <div class="card-footer">
-          <a href='{% url 'registrarpropietario' %}' class="btn btn-primary btn-flat"><i class="fas fa-plus"></i> Ingresar Nuevo</a>
-          <a href='{% url 'home' %}' class="btn btn-danger btn-flat"><i class="fas fa-ban"></i> Cancelar</a>
-        </div>
+      {% block botones %}
+       
+      {% endblock botones %}  
   </div>
 
 </div>
