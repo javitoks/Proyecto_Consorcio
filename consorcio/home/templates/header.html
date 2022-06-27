@@ -1,7 +1,7 @@
 {% load static %}
 
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+<nav class="main-header navbar navbar-expand-md navbar-orange navbar-light">
     <div class="container">
       <a href="{% url 'home' %}" class="navbar-brand">
         <img src="{% static 'img/2149-a.png' %}" alt="logo consorcio" class="brand-image img-circle elevation-3" style="opacity: .8">
@@ -55,18 +55,17 @@
               <!-- End Level two -->
             </ul>
           </li>
+          <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Formularios</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              <li><a href="{% url 'registrarpropietario' %}" class="dropdown-item"> Editar Casas </a></li>
+              <li><a href="{% url 'propietarios' %}" class="dropdown-item">Editar Propietarios</a></li>
+              <li><a href="{% url 'inquilinos' %}" class="dropdown-item">Editar Inquilinos</a></li>
+
+              <li class="dropdown-divider"></li>
         </ul>
 
 
-      <!-- Right navbar links -->
-      <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">    
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-            <i class="fas fa-th-large"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
+      </div>
   </nav>
-  <!-- /.navbar -->
+  
