@@ -32,6 +32,9 @@ def loguearse(request):
                 return redirect('home')
 
             else:
-                messages.error(request, 'Informacion incorrecta')    #si hay algun error, sale este mensaje
+                messages.error(request, 'La informacion ingresada es incorrecta')    #si hay algun error, sale este mensaje
         else:
-            messages.error(request, 'Informacion Incorrecta')
+            messages.error(request, 'La informacion ingresada es incorrecta')
+    
+    form = AuthenticationForm()
+    return render(request, 'login.html', {'form': form})
