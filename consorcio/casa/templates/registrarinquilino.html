@@ -4,6 +4,8 @@
 
 {% block content %} 
 
+{% if request.user.is_authenticated %}
+
 
 {% if form.errors %}
 
@@ -37,5 +39,14 @@
     <a href="{% url 'inquilinos' %}" class="btn btn-danger">Cancelar</a>
   </div>
 </form>
+
+
+{% else %}
+
+<div class="alert alert-warning">Loguearse para continuar</div>
+
+{% endif %}
+
+
 
 {% endblock %}

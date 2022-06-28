@@ -5,5 +5,7 @@ from home import views
 
 
 urlpatterns = [
-    path('', views.home, name='home')
+    path('', views.home, name='home'),
+    path('login/', views.logueo, name='logueo'),
+
 ]
