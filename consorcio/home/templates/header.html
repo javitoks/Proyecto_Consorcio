@@ -20,13 +20,9 @@
             <a href="{% url 'home' %}" class="nav-link">Inicio</a>
           </li>
           
-          <li class="nav-item">
-            <a href="{% url 'admin:index' %}" class="nav-link">Administración</a>
-          </li>
+          
 
-          <li class="nav-item">
-            <a href="{% url 'logueo' %}" class="nav-link">Login</a>
-          </li>
+         
           
           <li class="nav-item dropdown">
             
@@ -74,12 +70,32 @@
                   </li>            
                 
                 </ul>
-              
+                
                 
               </li>
-                
+              
                               
               </ul>
+
+              <li class="nav-item">
+                <a href="{% url 'admin:index' %}" class="nav-link">Administración</a>
+              </li>
+
+              <li class="nav-item">
+                {% if user.is_authenticated %}    <!--si el usuario esta autenticado-->
+                  <a href="#" class="nav-link">Hola, {{user.username}}</a>   <!-- mostrar el nombre del usuario -->
+                {% else %}
+                  <a href="{% url 'logueo' %}" class="nav-link">Iniciar Sesion</a> <!-- mensaje q muestra si no esta autenticado -->
+                {% endif %}               
+              </li>              
+              
+              <li class="nav-item">
+                <a href="{% url 'cerrarsesion' %}" class="nav-link">Cerrar Sesion</a>
+              </li>
+
+              
+
+
             </ul>
 
       </div>

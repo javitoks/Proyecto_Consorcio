@@ -1,5 +1,11 @@
 {% extends "list.html" %} 
 
+{% block titulo %}
+
+<div><h1>Listado de Inquilinos</h1></div>
+
+{% endblock titulo %}
+
 {% block columns %}
 <tr>
   <th scope="col">Nombre</th>
@@ -13,7 +19,9 @@
 
 {% block rows %} 
 
-{% for inquilino in inquilinos %}
+{% if object_list %}
+
+{% for inquilino in object_list %}
 
 <tr>
   <td>{{inquilino.nombre }}</td>
@@ -25,13 +33,17 @@
     <a href="{% url 'editarinquilino' inquilino.id %}" class="btn btn-warning">
       <i class="fas fa-edit"></i>
     </a>
-    <a href="#" class="btn btn-danger">
+    <a href={% url 'eliminarinquilino' inquilino.id %} class="btn btn-danger">
       <i class="fas fa-trash"></i>
     </a>
   </td>
 </tr>
 
 {% endfor %} 
+
+{% else %}  <h2>No hay registros de Inquilinos</h2>
+
+{% endif %}
 
 {% endblock rows %}
 

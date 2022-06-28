@@ -1,5 +1,10 @@
 {% extends "list.html" %} 
 
+{% block titulo %}
+
+<div><h1>Listado de Casas</h1></div>
+
+{% endblock titulo %}
 
 {% block columns %}
 <tr>
@@ -11,7 +16,7 @@
   <th scope="col">Disponibilidad</th>
   <th scope="col">Acciones</th>
 </tr>
-{% endblock columns %} {% block rows %} {% for casa in casas %}
+{% endblock columns %} {% block rows %} {% for casa in object_list %}
 
 <tr>
   <td>{{ casa.numero_casa }}</td>

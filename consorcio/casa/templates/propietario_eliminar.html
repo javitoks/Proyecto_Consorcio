@@ -1,0 +1,16 @@
+{% extends 'home.html' %}
+
+
+
+{% block content %}
+
+<form method="post">{% csrf_token %}
+    <p>¿Está seguro de que quiere eliminar a "{{ propietario.nombre }}"?</p>
+    
+    <button class="btn btn-danger btn-flat" type="submit"> Si, eliminarlo</button>
+       
+    <a class="btn btn-success btn-flat" href="  {% url 'propietarios' %} ">Cancelar</a>
+</form>
+
+{% endblock content %}
+

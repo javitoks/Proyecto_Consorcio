@@ -1,17 +1,44 @@
+from venv import create
 from django.http import HttpRequest
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from casa.forms import FormularioPropietario, FormularioInquilino, FormularioCasa
-from casa.models import Casa, Inquilino, Propietario
+from casa.models import *
+
+from django.views.generic.edit import DeleteView, CreateView, UpdateView
+from django.views.generic import ListView
 
 
 # Create your views here.
 
+#PROPIETARIOS
+
+class RegistrarPropietario(CreateView):
+    model = Propietario
+    form_class = FormularioPropietario
+    template_name = "registrarpropietario.html"
+    success_url = reverse_lazy('propietarios')
+
+class EliminarPropietario(DeleteView):
+    model = Propietario
+    template_name = "propietario_eliminar.html"
+    success_url = reverse_lazy('propietarios')
+
+
+class ListarPropietarios(ListView):
+    model = Propietario
+    template_name = "propietarios.html"
+
+class ActualizarPropietario(UpdateView):
+    model = Propietario
+    template_name = "editarpropietario.html"
+    form_class = FormularioPropietario
+    success_url = 'propietarios.html'
+
+
+
 
 class FormularioPropietarioView(HttpRequest):
-
-    def index(request):
-        propietario = FormularioPropietario()
-        return render(request, 'registrarpropietario.html', {'form': propietario})
 
     def procesar_formulario(request):
         propietario = FormularioPropietario(request.POST)
@@ -32,24 +59,18 @@ class FormularioPropietarioView(HttpRequest):
             form.save()
         propietarios = Propietario.objects.all()
         return render(request, 'propietarios.html', {'propietarios': propietarios})
-   
-    def listado_propietarios(request):
-        data = {
-            'titulo': 'Listado de Propietarios',
-            'propietarios': Propietario.objects.all()
-        }
-        return render(request, 'propietarios.html', data)
-
-
-    def eliminar_propietario(request, id_propietario):
-        propietario = Propietario.objects.get(pk=id_propietario)
-        propietario.delete()
-        propietarios = Propietario.objects.all()
-        propietarios = Propietario.objects.all()
-        return render(request, 'propietarios.html', {'propietarios': propietarios})
         
 
+#INQUILINOS
 
+class EliminarInquilino(DeleteView):
+    model = Inquilino
+    template_name = "inquilino_eliminar.html"
+    success_url = reverse_lazy('inquilinos')
+
+class ListarInquilinos(ListView):
+    model = Inquilino
+    template_name = "inquilinos.html"
 
 class FormularioInquilinoView(HttpRequest):
 
@@ -65,14 +86,6 @@ class FormularioInquilinoView(HttpRequest):
             inquilino = FormularioInquilino()
         return render(request, 'registrarinquilino.html', {'form': inquilino, 'mensaje': 'OK'})
 
-
-    def listado_inquilinos(request):
-        data = {
-            'titulo': 'Listado de Inquilinos',
-            'inquilinos': Inquilino.objects.all()
-        }
-        return render(request, 'inquilinos.html', data)
-
     def editar_inquilino(request, id_inquilino):
         inquilino = Propietario.objects.filter(id=id_inquilino).first()
         form = FormularioPropietario(instance = inquilino)
@@ -87,7 +100,11 @@ class FormularioInquilinoView(HttpRequest):
         return render(request, 'inquilinos.html', {'inquilinos': inquilinos})
 
 
+#CASA
 
+class ListarCasas(ListView):
+    model = Casa
+    template_name = "listado_casas.html"
 
 
 class FormularioCasaView(HttpRequest):
@@ -104,11 +121,3 @@ class FormularioCasaView(HttpRequest):
             form.save()
         casas = Casa.objects.all()
         return render(request, 'listado_casas.html', {'casas': casas})
-
-
-    def listado_casas(request):
-        data = {
-            'titulo': 'Listado de Casas',
-            'casas': Casa.objects.all()
-        }
-        return render(request, 'listado_casas.html', data)

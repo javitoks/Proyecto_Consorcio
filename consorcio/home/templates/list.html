@@ -1,14 +1,16 @@
 {% extends "home.html" %}
 
 
-
 {% block content %}
+
 
 {% if request.user.is_authenticated %}
 
 <div class="card card-default">
   <div class="card-header">
-    <h3 class="card-title"><i class="fas fa-search"></i>{{ titulo }}</h3> 
+    {% block titulo %}
+    <h3 class="card-title"><i class="fas fa-search"></i>{{ object_list.nombre }}</h3> 
+    {% endblock titulo %}
   </div>
     
  

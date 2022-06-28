@@ -1,5 +1,12 @@
 {% extends "list.html" %} 
 
+{% block titulo %}
+
+<div><h1>Listado de Propietarios</h1></div>
+
+{% endblock titulo %}
+
+
 {% block columns %}
 <tr>
   <th scope="col">Nombre</th>
@@ -13,8 +20,8 @@
 
 {% block rows %} 
 
-
-{% for propietario in propietarios %}
+{% if object_list %}
+{% for propietario in object_list %}
 
 <tr>
   <td>{{propietario.nombre}}</td>
@@ -34,6 +41,10 @@
 </tr>
 
 {% endfor %} 
+
+{% else %}  <h2>No hay registros de Propietarios</h2>
+
+{% endif %}
 
 {% endblock rows %}
 
