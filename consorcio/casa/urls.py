@@ -7,10 +7,6 @@ from casa import views
 urlpatterns = [
     
     #URLS de la tabla propietarios
-    
-    path('guardar_propietario/', views.FormularioPropietarioView.procesar_formulario, name='guardar_propietario'),
-    
-    path('actualizar_propietario/<int:id_propietario>', views.FormularioPropietarioView.actualizar_propietario, name='actualizarpropietario'),
     path('eliminar_propietario/<int:pk>', EliminarPropietario.as_view(), name='eliminarpropietario'),
     path('listar_propietarios/', ListarPropietarios.as_view(), name='propietarios'),
     path('registrar_propietario/', RegistrarPropietario.as_view(), name='registrarpropietario'),

@@ -7,17 +7,14 @@
 
 {% if form.errors %}
 
-<div class="alert alert-danger" role="alert">
-  El formulario contiene errores, reviselos!
-</div>
+  <div class="alert alert-danger" role="alert"> El formulario contiene errores, reviselos! </div>
 
 {% endif %}
 
 <h1 class="text-center">Editar Propietario</h1>
 
-<form action=" {% url 'actualizarpropietario' propietario.id %}" method="POST">
-  
-    {% csrf_token %} 
+<form method="post">{% csrf_token %}
+
   
   {% if mensaje %}
 
@@ -29,13 +26,18 @@
 
   <div style="width: 50%; margin: auto">
     
-    {{form | crispy}}
 
+  
+
+    {{ form.as_p }}
+    
     <p></p>
 
-    <button type="submit" class="btn btn-success">Guardar</button>
+    
+   <button type="submit" class="btn btn-success">Guardar</button>
     <a href="{% url 'propietarios' %}" class="btn btn-danger">Cancelar</a>
   </div>
 </form>
 
 {% endblock %}
+

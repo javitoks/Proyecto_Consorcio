@@ -2,7 +2,7 @@ from venv import create
 from django.http import HttpRequest
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from casa.forms import FormularioPropietario, FormularioInquilino, FormularioCasa
+from casa.forms import *
 from casa.models import *
 
 from django.views.generic.edit import DeleteView, CreateView, UpdateView
@@ -22,44 +22,19 @@ class RegistrarPropietario(CreateView):
 class EliminarPropietario(DeleteView):
     model = Propietario
     template_name = "propietario_eliminar.html"
-    success_url = reverse_lazy('propietarios')
+    success_url = reverse_lazy('propietarios')      #OK
 
 
 class ListarPropietarios(ListView):
-    model = Propietario
+    model = Propietario                             #OK
     template_name = "propietarios.html"
 
-class ActualizarPropietario(UpdateView):
+class ActualizarPropietario(UpdateView):            #OK
     model = Propietario
     template_name = "editarpropietario.html"
     form_class = FormularioPropietario
-    success_url = 'propietarios.html'
-
-
-
-
-class FormularioPropietarioView(HttpRequest):
-
-    def procesar_formulario(request):
-        propietario = FormularioPropietario(request.POST)
-        if propietario.is_valid():
-            propietario.save()
-            propietario = FormularioPropietario()
-        return render(request, 'registrarpropietario.html', {'form': propietario, 'mensaje': 'OK'})
-
-    def editar_propietario(request, id_propietario):
-        propietario = Propietario.objects.filter(id=id_propietario).first()
-        form = FormularioPropietario(instance = propietario)
-        return render(request, 'editarpropietario.html', {'form':form, 'propietario':propietario})
-
-    def actualizar_propietario(request, id_propietario):
-        propietario = Propietario.objects.get(pk=id_propietario)
-        form = FormularioPropietario(request.POST, instance=propietario)
-        if form.is_valid():
-            form.save()
-        propietarios = Propietario.objects.all()
-        return render(request, 'propietarios.html', {'propietarios': propietarios})
-        
+    success_url = reverse_lazy('propietarios')
+            
 
 #INQUILINOS
 
