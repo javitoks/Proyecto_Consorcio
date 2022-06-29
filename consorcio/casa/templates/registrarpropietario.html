@@ -32,30 +32,7 @@
   <div style="width: 25%; margin: auto">
   
     
-    <div class="form-group">
-      <label>Nmbre</label>
-      <input type="text" class="form-control" placeholder="Ingrese el nombre ..." name="{{ form.nombre.name }}">    
-    </div>
-    
-    <div class="form-group">
-      <label>Apellido</label>
-      <input type="text" class="form-control" placeholder="Ingrese el apellido ..." name="{{ form.apellido.name }}">
-    </div>
-    
-    <div class="form-group">   
-      <label for="exampleInputEmail1">Email</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Ingrese el email" name="{{ form.email.name }}">
-    </div>
-    
-    <div class="form-group">
-      <label>CBU</label>
-      <input type="text" class="form-control" placeholder="Ingrese el CBU ..." name='{{ form.CBU.name }}'>   
-    </div>
-            
-    <div class="form-group">
-      <label>Telefono</label>
-      <input type="text" class="form-control" placeholder="Ingrese el telefono ..." name='{{ form.telefono.name }}'>
-    </div>
+    {{form | crispy}}
   
     <p></p>
 
