@@ -16,7 +16,7 @@ from django.views.generic import ListView
 class RegistrarPropietario(CreateView):
     model = Propietario
     form_class = FormularioPropietario
-    template_name = "registrarpropietario.html"
+    template_name = "registrarpropietario.html"     #OK
     success_url = reverse_lazy('propietarios')
 
 class EliminarPropietario(DeleteView):
@@ -34,7 +34,7 @@ class ActualizarPropietario(UpdateView):            #OK
     template_name = "editarpropietario.html"
     form_class = FormularioPropietario
     success_url = reverse_lazy('propietarios')
-            
+
 
 #INQUILINOS
 

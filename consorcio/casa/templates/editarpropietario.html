@@ -24,18 +24,48 @@
 
   {% endif %}
 
-  <div style="width: 50%; margin: auto">
-    
+  <div style="width: 25%; margin: auto">
 
-  
 
-    {{ form.as_p }}
+
+{{form.as_p}}
+
+
+
+    {% comment %} <div class="form-group">
+      <label>Nmbre</label>
+      <input type="text" class="form-control" placeholder= 'Ingrese el nombre' name= {{ form.apellido }}
+    </div>
     
+    <div class="form-group">
+      <label>Apellido</label>
+      <input type="text" class="form-control" placeholder="Ingrese el apellido ..." name= {{ form.apellido }}
+    </div>
+    
+    <div class="form-group">   
+      <label for="exampleInputEmail1">Email</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Ingrese el email" name= {{ form.email }}
+    
+    </div>
+    
+    <div class="form-group">
+      <label>CBU</label>
+      <input type="text" class="form-control" placeholder="Ingrese el CBU ..." name={{ form.CBU }}   
+    </div>
+            
+    <div class="form-group">
+      <label>Telefono</label>
+      <input type="text" class="form-control" placeholder="Ingrese el telefono ..." name={{ form.telefono }}
+    </div>
+  {% endcomment %}
     <p></p>
 
-    
-   <button type="submit" class="btn btn-success">Guardar</button>
-    <a href="{% url 'propietarios' %}" class="btn btn-danger">Cancelar</a>
+    <div class="card-footer">
+      <button type="submit" class="btn btn-success">Guardar</button>
+      <a href="{% url 'propietarios' %}" class="btn btn-danger">Cancelar</a>
+    </div> 
+
+
   </div>
 </form>
 
