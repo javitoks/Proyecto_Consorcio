@@ -12,6 +12,10 @@ urlpatterns = [
     path('listar_propietarios/', ListarPropietarios.as_view(), name='propietarios'),
     path('registrar_propietario/', RegistrarPropietario.as_view(), name='registrarpropietario'),
     path('editar_propietario/<int:pk>', ActualizarPropietario.as_view(), name='editarpropietario'),
+    path('reporte_propietarios/', ExportarPropietarios.as_view(), name='reportepropietarios'),
+    path('reporte_propietariosPDF/', ExportarPropietariosPDF.as_view(), name='reportepropietariosPDF'),
+
+
 
 
     #URLS de la tabla inquilinos
