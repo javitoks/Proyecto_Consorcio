@@ -2,13 +2,13 @@
 
 {% block titulo %}
 
-<div><h1>Listado de Casas</h1></div>
+<div><h3>Listado de Casas</h3></div>
 
 {% endblock titulo %}
 
 {% block columns %}
 <tr>
-  <th scope="col">Casa</th>
+  <th scope="col">Duplex</th>
   <th scope="col">Propietario</th>
   <th scope="col">Administrador</th>
   <th scope="col">Inquilino</th>
@@ -26,7 +26,7 @@
   <td>{{casa.estado}}</td>
   <td>{{casa.disponibilidad}}</td>
   <td>
-    <a href="{% url 'editarcasa' casa.id %}" class="btn btn-warning">
+    <a href="{% url 'actualizarcasa' casa.id %}" class="btn btn-warning">
       <i class="fas fa-edit"></i>
     </a>
     <!--<a href="#" class="btn btn-danger">

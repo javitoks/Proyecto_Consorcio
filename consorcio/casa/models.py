@@ -50,6 +50,7 @@ class Inquilino(models.Model):
     modificado = models.DateTimeField(auto_now=True)
     
     class Meta:
+        ordering = ['nombre']
         verbose_name = ("Inquilino")
         verbose_name_plural = ("Inquilinos")
     
@@ -59,11 +60,11 @@ class Inquilino(models.Model):
 
 class Casa(models.Model):
     numero_casa = models.CharField(max_length=2, blank=False, null=False, help_text='Ingrese el numero y la letra ej: 5A')
-    propietario = models.ForeignKey(Propietario, on_delete=models.CASCADE)  
-    administrador = models.ForeignKey(Administrador, on_delete=models.CASCADE) 
+    propietario = models.ForeignKey(Propietario, on_delete=models.RESTRICT)  
+    administrador = models.ForeignKey(Administrador, on_delete=models.RESTRICT) 
     opciones_estado = [('Alquilada', 'Alquilada'), ('Desocupada' , 'Desocupada') , ('Ocupada-Dueño', 'Ocupada-Dueño')]
     estado = models.CharField(max_length=15, null=False, choices=opciones_estado, default='OCU')
-    inquilino = models.ForeignKey(Inquilino, verbose_name=("Inquilino"), on_delete=models.CASCADE)
+    inquilino = models.ForeignKey(Inquilino, verbose_name=("Inquilino"), on_delete=models.RESTRICT)
     disponibilidad = models.BooleanField(default=True)
     creado = models.DateTimeField(auto_now_add=True) 
     modificado = models.DateTimeField(auto_now=True)

@@ -16,20 +16,20 @@ from django.views.generic import ListView
 class RegistrarPropietario(CreateView):
     model = Propietario
     form_class = FormularioPropietario
-    template_name = "registrarpropietario.html"     #OK
+    template_name = "registrarpropietario.html"    
     success_url = reverse_lazy('propietarios')
 
 class EliminarPropietario(DeleteView):
     model = Propietario
     template_name = "propietario_eliminar.html"
-    success_url = reverse_lazy('propietarios')      #OK
+    success_url = reverse_lazy('propietarios')      
 
 
 class ListarPropietarios(ListView):
-    model = Propietario                             #OK
+    model = Propietario                             
     template_name = "propietarios.html"
 
-class ActualizarPropietario(UpdateView):            #OK
+class ActualizarPropietario(UpdateView):            
     model = Propietario
     template_name = "editarpropietario.html"
     form_class = FormularioPropietario
@@ -37,6 +37,20 @@ class ActualizarPropietario(UpdateView):            #OK
 
 
 #INQUILINOS
+
+class RegistrarInquilino(CreateView):
+    model = Inquilino
+    form_class = FormularioInquilino
+    template_name = "registrarinquilino.html"     
+    success_url = reverse_lazy('inquilinos')
+
+
+class ActualizarInquilino(UpdateView):            
+    model = Inquilino
+    template_name = "editarinquilino.html"
+    form_class = FormularioInquilino
+    success_url = reverse_lazy('inquilinos')
+
 
 class EliminarInquilino(DeleteView):
     model = Inquilino
@@ -47,39 +61,17 @@ class ListarInquilinos(ListView):
     model = Inquilino
     template_name = "inquilinos.html"
 
-class FormularioInquilinoView(HttpRequest):
-
-    def index(request):
-        inquilino = FormularioInquilino()
-        return render(request, 'registrarinquilino.html', {'form': inquilino})
-
-
-    def procesar_formulario(request):
-        inquilino = FormularioInquilino(request.POST)
-        if inquilino.is_valid():
-            inquilino.save()
-            inquilino = FormularioInquilino()
-        return render(request, 'registrarinquilino.html', {'form': inquilino, 'mensaje': 'OK'})
-
-    def editar_inquilino(request, id_inquilino):
-        inquilino = Propietario.objects.filter(id=id_inquilino).first()
-        form = FormularioPropietario(instance = inquilino)
-        return render(request, 'editarinquilino.html', {'form':form, 'inquilino':inquilino})
-
-    def actualizar_inquilino(request, id_inquilino):
-        inquilino = Inquilino.objects.get(pk=id_inquilino)
-        form = FormularioInquilino(request.POST, instance=inquilino)
-        if form.is_valid():
-            form.save()
-        inquilinos = Inquilino.objects.all()
-        return render(request, 'inquilinos.html', {'inquilinos': inquilinos})
-
-
 #CASA
 
 class ListarCasas(ListView):
     model = Casa
     template_name = "listado_casas.html"
+
+class ActualizarCasa(UpdateView):            
+    model = Casa
+    template_name = "editarcasa.html"
+    form_class = FormularioCasa
+    success_url = reverse_lazy('listado_casas')
 
 
 class FormularioCasaView(HttpRequest):
