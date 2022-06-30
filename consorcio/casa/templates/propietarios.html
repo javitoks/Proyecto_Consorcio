@@ -51,13 +51,10 @@
 {% block botones %}
 
 <div class="card-footer">
-  <a href='{% url 'registrarpropietario' %}' class="btn btn-primary btn-flat"><i class="fas fa-plus"></i> Ingresar Nuevo</a>
-  <a href='{% url 'home' %}' class="btn btn-danger btn-flat"><i class="fas fa-ban"></i> Cancelar</a>
-  <a href='{% url 'reportepropietarios' %}' class="btn btn-danger btn-flat"><i class="fas fa-ban"></i> Exportar a XLS</a>
+  <a href='{% url 'registrarpropietario' %}' class="btn bg-gradient-success"><i class="fas fa-plus"></i> Ingresar Nuevo</a>
+  <a href='{% url 'home' %}' class="btn bg-gradient-danger"><i class="fas fa-ban"></i> Cancelar</a>
+  <a href='{% url 'reportepropietarios' %}' class="btn bg-gradient-primary"><i class="fas fa-file"></i> Exportar a XLS</a>
 </div>
-
-
-
 
 {% endblock botones %}
 
