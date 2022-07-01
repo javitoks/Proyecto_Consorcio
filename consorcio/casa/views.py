@@ -162,13 +162,12 @@ class ExportarInquilinos(TemplateView):
         wb.save(response)
         return response
 
-#Exportar PDFs (Hay que instalar xhtml2pdf)
 
-class ExportarPropietariosPDF(View):
-    def get(self, request, *args, **kwargs):
-        return HttpResponse('Hello, World!')
-
+class ListarCupones(ListView):
+    model = Propietario                             
+    template_name = "cupones_pago.html"
 
 
+    
 
 

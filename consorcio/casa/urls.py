@@ -13,7 +13,7 @@ urlpatterns = [
     path('registrar_propietario/', RegistrarPropietario.as_view(), name='registrarpropietario'),
     path('editar_propietario/<int:pk>', ActualizarPropietario.as_view(), name='editarpropietario'),
     path('reporte_propietarios/', ExportarPropietarios.as_view(), name='reportepropietarios'),
-    path('reporte_propietariosPDF/', ExportarPropietariosPDF.as_view(), name='reportepropietariosPDF'),
+    
 
 
 
@@ -30,6 +30,12 @@ urlpatterns = [
     
     path('listar_casas/', ListarCasas.as_view(), name='listado_casas'),
     path('actualizar_casa/<int:pk>', ActualizarCasa.as_view(), name='actualizarcasa'),
+
+
+    path('cupones_pago/', ListarCupones.as_view(), name='cuponespago')
+
+
+
 
 ]
 
