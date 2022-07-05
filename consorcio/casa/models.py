@@ -77,4 +77,31 @@ class Casa(models.Model):
     def __str__(self):
         return ('{} {}'.format('Duplex', self.numero_casa))
         
-         
+
+class Cuota(models.Model):
+    meses = [
+        ('01','Enero'),
+        ('02','Febrero'),
+        ('03','Marzo'),
+        ('04','Abril'),
+        ('05','Mayo'),
+        ('06','Junio'),
+        ('07','Julio'),
+        ('08','Agosto'),
+        ('09','Septiembre'),
+        ('10','Octubre'),
+        ('11','Noviembre'),
+        ('12','Diciembre')        
+    ]
+    mes =  models.CharField(max_length=15, null=False, choices=meses, default='enero')
+    monto = models.IntegerField()
+    año = models.PositiveSmallIntegerField(max_length=4, default=2022)
+    
+    
+    class Meta:
+        ordering = ['mes']
+        verbose_name = ("Cuota")
+        verbose_name_plural = ("Cuotas")
+    
+    def __str__(self):
+        return ('{} {}'.format(self.mes, self.año))
