@@ -48,6 +48,7 @@ class Inquilino(models.Model):
     CBU = models.CharField(max_length=22, blank=True, null=True)
     creado = models.DateTimeField(auto_now_add=True) 
     modificado = models.DateTimeField(auto_now=True)
+    vigencia = models.BooleanField(default=True)
     
     class Meta:
         ordering = ['nombre']
@@ -55,6 +56,8 @@ class Inquilino(models.Model):
         verbose_name_plural = ("Inquilinos")
     
     def __str__(self):
+
+
         return ('{} {}'.format(self.apellido, self.nombre))
 
 
@@ -62,7 +65,11 @@ class Casa(models.Model):
     numero_casa = models.CharField(max_length=2, blank=False, null=False, help_text='Ingrese el numero y la letra ej: 5A')
     propietario = models.ForeignKey(Propietario, on_delete=models.RESTRICT)  
     administrador = models.ForeignKey(Administrador, on_delete=models.RESTRICT) 
-    opciones_estado = [('Alquilada', 'Alquilada'), ('Desocupada' , 'Desocupada') , ('Ocupada-Dueño', 'Ocupada-Dueño')]
+    opciones_estado = [
+        ('Alquilada', 'Alquilada'), 
+        ('Desocupada' , 'Desocupada') , 
+        ('Ocupada-Dueño', 'Ocupada-Dueño')
+        ]
     estado = models.CharField(max_length=15, null=False, choices=opciones_estado, default='OCU')
     inquilino = models.ForeignKey(Inquilino, verbose_name=("Inquilino"), on_delete=models.RESTRICT)
     disponibilidad = models.BooleanField(default=True)
@@ -74,28 +81,29 @@ class Casa(models.Model):
         verbose_name = ("Casa")
         verbose_name_plural = ("Casas")
     
-    def __str__(self):
-        return ('{} {}'.format('Duplex', self.numero_casa))
+
         
 
 class Cuota(models.Model):
     meses = [
         ('01','Enero'),
-        ('02','Febrero'),
-        ('03','Marzo'),
-        ('04','Abril'),
-        ('05','Mayo'),
-        ('06','Junio'),
-        ('07','Julio'),
-        ('08','Agosto'),
-        ('09','Septiembre'),
-        ('10','Octubre'),
-        ('11','Noviembre'),
-        ('12','Diciembre')        
+        ('Febrero','Febrero'),
+        ('Marzo','Marzo'),
+        ('Abril','Abril'),
+        ('Mayo','Mayo'),
+        ('Junio','Junio'),
+        ('Julio','Julio'),
+        ('Agosto','Agosto'),
+        ('Septiembre','Septiembre'),
+        ('Octubre','Octubre'),
+        ('Noviembre','Noviembre'),
+        ('Diciembre','Diciembre')        
     ]
     mes =  models.CharField(max_length=15, null=False, choices=meses, default='enero')
     monto = models.IntegerField()
-    año = models.PositiveSmallIntegerField(max_length=4, default=2022)
+    año = models.PositiveSmallIntegerField(default=2022)
+    creado = models.DateTimeField(auto_now_add=True) 
+    modificado = models.DateTimeField(auto_now=True)
     
     
     class Meta:
@@ -104,4 +112,18 @@ class Cuota(models.Model):
         verbose_name_plural = ("Cuotas")
     
     def __str__(self):
-        return ('{} {}'.format(self.mes, self.año))
+        return ('{} {} {}'.format(self.mes, 'de', self.año))
+
+
+class Pago(models.Model):
+    propietario = models.ForeignKey(Propietario, verbose_name= ("Propietario"), on_delete=models.CASCADE)
+    cuota_abonada = models.ForeignKey(Cuota, verbose_name= ("Cuota"), on_delete=models.CASCADE)
+
+    class Meta:
+        ordering = ['cuota_abonada']
+        verbose_name = ("Pago")
+        verbose_name_plural = ("Pagos")
+    
+    def __str__(self):
+        return ('{} {} {}'.format(self.propietario, '-', self.cuota_abonada))
+

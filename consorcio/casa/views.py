@@ -138,7 +138,7 @@ class ExportarInquilinos(TemplateView):
         wb = Workbook()
         ws = wb.active
         ws.title = 'Inquilinos'
-        ws['B1'] = 'REPORTE DE PROPIETARIOS'
+        ws['B1'] = 'REPORTE DE INQUILINOS'
         ws.merge_cells('B1:E1')
         ws['B3'] = 'Nombre'
         ws['C3'] = 'Apellido'
