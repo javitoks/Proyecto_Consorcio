@@ -118,9 +118,10 @@ class Cuota(models.Model):
 class Pago(models.Model):
     propietario = models.ForeignKey(Propietario, verbose_name= ("Propietario"), on_delete=models.CASCADE)
     cuota_abonada = models.ForeignKey(Cuota, verbose_name= ("Cuota"), on_delete=models.CASCADE)
+    casa = models.ForeignKey(Casa, verbose_name=('Casa'), on_delete=models.CASCADE)
 
     class Meta:
-        ordering = ['cuota_abonada']
+        ordering = ['casa']
         verbose_name = ("Pago")
         verbose_name_plural = ("Pagos")
     
