@@ -35,7 +35,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    #'django.contrib.admin',
+    'admin_interface',
+    'colorfield',    
+    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -45,8 +47,10 @@ INSTALLED_APPS = [
     'casa',
     'crispy_forms',
     'import_export',
-    'material',
-    'material.admin',
+    #'material',
+    #'material.admin',
+    
+
 ]
 
 #Necesarios para hacer funcionar el formulario
@@ -146,3 +150,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+X_FRAME_OPTIONS = "SAMEORIGIN"
+SILENCED_SYSTEM_CHECKS = ["security.W019"]
