@@ -1,0 +1,57 @@
+{% extends 'home.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %} 
+
+{% if request.user.is_authenticated %}
+
+
+{% if form.errors %}
+
+<div class="alert alert-danger" role="alert">
+  El formulario contiene errores, reviselos!
+</div>
+
+{% endif %}
+
+<h1 class="text-center">Registro de Pagos</h1>
+
+<form method="post">{% csrf_token %}
+ 
+  
+  
+  {% if mensaje %}
+
+    <div class="alert alert-success" role="alert">
+         Pago registrado exitosamente!
+    </div>
+
+  {% endif %}
+
+  <div style="width: 25%; margin: auto">
+  
+    
+    {{form | crispy}}
+  
+    <p></p>
+
+    <div class="card-footer">
+      <button type="submit" class="btn btn-success">Guardar</button>
+      <a href="{% url 'listarpagos' %}" class="btn btn-danger">Cancelar</a>
+    </div>
+ 
+   
+  </div>
+
+</form>
+
+
+{% else %}
+
+<div class="alert alert-warning"> <h4> Loguearse para continuar </h4> </div>
+
+{% endif %}
+
+
+{% endblock %}

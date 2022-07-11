@@ -1,0 +1,54 @@
+{% extends 'list.html' %}
+
+{% load static %}
+
+{% block titulo %}
+
+<div><h3>Listado de Pagos</h3></div>
+
+{% endblock titulo %}
+
+{% block columns %}
+<tr>
+  <th scope="col">Propietario</th>
+  <th scope="col">Cuota Abonada</th>
+  
+</tr>
+{% endblock columns %} 
+
+{% block rows %} 
+
+{% if object_list %}
+{% for pago in object_list %}
+
+<tr>
+  <td>{{pago.propietario}}</td>
+  <td>{{pago.cuota_abonada}}</td>
+   
+  <td>
+    {% comment %} <a href="{% url 'registrarpago' pago.id %}" class="btn btn-warning">
+      <i class="fas fa-edit"></i>
+    </a>
+    <a href="{% url 'eliminarpropietario' propietario.id %}" class="btn btn-danger">
+      <i class="fas fa-trash"></i>
+    </a> {% endcomment %}
+  </td>
+</tr>
+
+{% endfor %} 
+
+{% else %}  <h2>No hay registros de Cuotas</h2>
+
+{% endif %}
+
+{% endblock rows %}
+
+{% block botones %}
+
+<div class="card-footer">
+  <a href='{% url 'registrarpropietario' %}' class="btn bg-gradient-success"><i class="fas fa-plus"></i> Ingresar Nuevo</a>
+  <a href='{% url 'home' %}' class="btn bg-gradient-danger"><i class="fas fa-ban"></i> Cancelar</a>
+  <a href='{% url 'reportepropietarios' %}' class="btn bg-gradient-primary"><i class="fas fa-file"></i> Exportar a XLS</a>
+</div>
+
+{% endblock botones %}

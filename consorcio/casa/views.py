@@ -167,6 +167,18 @@ class ListarCupones(ListView):
     model = Propietario                             
     template_name = "cupones_pago.html"
 
+#PAGOS
+
+class ListarPagos(ListView):
+    model = Pago
+    template_name = 'listar_pagos.html'
+
+class RegistrarPago(CreateView):
+    model = Pago
+    form_class = FormularioPago
+    template_name = "registrar_pago.html"    
+    success_url = reverse_lazy('listarpagos')    
+
 
     
 

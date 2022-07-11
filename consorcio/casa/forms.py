@@ -1,6 +1,7 @@
+from dataclasses import field
 from django import forms
 
-from casa.models import Propietario, Inquilino, Casa
+from casa.models import Propietario, Inquilino, Casa, Pago
 
 
 
@@ -21,3 +22,7 @@ class FormularioCasa(forms.ModelForm):
         fields = '__all__'
 
 
+class FormularioPago(forms.ModelForm):
+    class Meta:
+        model = Pago
+        fields = '__all__'

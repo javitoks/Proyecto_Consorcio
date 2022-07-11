@@ -32,7 +32,11 @@ urlpatterns = [
     path('actualizar_casa/<int:pk>', ActualizarCasa.as_view(), name='actualizarcasa'),
 
 
-    path('cupones_pago/', ListarCupones.as_view(), name='cuponespago')
+    #Pagos
+    path('cupones_pago/', ListarCupones.as_view(), name='cuponespago'),
+
+    path('listar_pagos/', ListarPagos.as_view(), name='listarpagos'),
+    path('registrar_pagos/', RegistrarPago.as_view(), name='registrarpago'),
 
 
 
