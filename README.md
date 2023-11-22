@@ -1,4 +1,4 @@
-# Proyectos_Django
+# Proyecto Consorcio
 
 javitoks
 riva2149*
